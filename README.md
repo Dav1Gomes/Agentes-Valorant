@@ -1,6 +1,11 @@
-# 🔫🕹 Agentes Valorant  
+<h1 align="center">
+  <img src="https://media1.tenor.com/m/GCkCLZQiRDUAAAAC/yayy.gif" height="35px" />
+  Agentes Valorant
+</h1>
 
 Bem-vindo ao **Agentes Valorant**! Este projeto foi desenvolvido para apresentar de forma interativa e estilosa os agentes do jogo **Valorant**, destacando suas habilidades e características únicas.  
+
+<p align="center"><a href="https://dav1gomes.github.io/Agentes-Valorant/" target="_blank">Acessar Projeto</a></p>
 
 ## 📌 Sobre o projeto  
 
@@ -44,15 +49,6 @@ O site foi criado com um **design imersivo**, utilizando uma paleta de cores ins
 🖥️ **HTML5** - Estruturação do conteúdo.  
 🎨 **CSS3** - Estilização e animações.  
 ⚡ **JavaScript** - Interatividade e funcionalidades dinâmicas.  
-
-## 💡 Como Usar  
-
-1️⃣ Clone o repositório:  
-```bash  
-git clone https://github.com/Dav1Gomes/Valorant_Agentes.git
-```  
-2️⃣ Abra o arquivo `index.html` em seu navegador.  
-3️⃣ Explore os agentes e descubra suas habilidades!  
 
 ## 🤝 Agradecimentos  
 
