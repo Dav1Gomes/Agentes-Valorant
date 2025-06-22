@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agentes do Valorant</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="valorant icon.png" type="image/png">
+    <link rel="icon" href="img/valorant icon.png" type="image/png">
 </head>
 <body>
     <header>
@@ -46,8 +46,16 @@
         <p>Trabalho realizado por Davi Gomes e Thiago Schmitz.</p>
     </footer>
 
-    <div id="alertaHabilidade" class="alerta-habilidade"></div>
-
+    <div id="modal" class="modal">
+        <div class="modal-conteudo">
+            <button id="fecharModal" class="fechar-modal">&times;</button>
+            <div class="modal-cabecalho">
+                <img id="iconeModal" src="" alt="Ícone da habilidade" class="icone-modal">
+                <h3 id="nomeHabilidadeModal"></h3>
+            </div>
+            <p id="textoModal"></p>
+        </div>
+    </div>
     <script type="module" src="script.js"></script>
 </body>
 </html>
