@@ -1,195 +1,121 @@
-import { buscarAgentes } from './modulos/agentes.js';
+import { buscarAgentes } from "./modulos/agentes.js";
 
-let indiceAgenteAtual = 0;
 let agentes = [];
 
-const coresAgente = {
-    Astra: '#7b2cbf',  // Roxo
-    Breach: '#ff6f00', // Laranja
-    Brimstone: '#b95114', // Laranja
-    Chamber: '#978246', // Dourado
-    Cypher: '#8e99b3', // Azul acizentado 
-    Clove: '#d994f0', // Rosa bebê
-    Deadlock: '#6682a1', // Azul cinza
-    Fade: '#851e3d', // Vermelho escuro
-    Gekko: '#caf55f', // Verde lima
-    Harbor: '#2b6772', // Verde azulado
-    Iso: '#5b45c3',  // Roxo azulado
-    Jett: '#0ca4e3', // Azul
-    KAYO: '#a1d7ff', // Azul
-    Killjoy: '#f4d35e', // Amarelo
-    Neon: '#00f3ff', // Ciano
-    Omen: '#7359FF', // Roxo azulado
-    Phoenix: '#ff5900', // Laranja forte
-    Raze: '#fec753', // Amarelo Fosco
-    Reyna: '#710193', // Roxo escuro
-    Sage: '#1db39c', // Ciano
-    Skye: '#009f4f', // Verde
-    Sova: '#89c2d9', // Azul Claro
-    Tejo : '#ffb573ff', // laranja claro
-    Viper: '#08b647', // Verde Lima
-    Vyse: '#171F36', //azul escuro
-    Waylay: '#5b477eff', //roxo 
-    Yoru: '#5065b8' // Azul Claro
-};
-
-const coresPapel = {
-    'Duelista': '#333', // Cinza 
-    'Iniciador': '#333', 
-    'Controlador': '#333', 
-    'Sentinela': '#333' 
-};
-
-const containerImagemAgente = document.getElementById('containerImagemAgente');
-const imagemAgente = document.getElementById('imagemAgente');
-const nomeAgente = document.getElementById('nomeAgente');
-const papelAgente = document.getElementById('papelAgente');
-const descricaoAgente = document.getElementById('descricaoAgente');
-const habilidadesAgente = document.getElementById('habilidadesAgente');
-const botaoAnterior = document.getElementById('botaoAnterior');
-const botaoProximo = document.getElementById('botaoProximo');
-const BuscaId = document.getElementById('BuscaId');
-const botaoBusca = document.getElementById('botaoBusca');
-const carregandoElemento = document.getElementById('carregando');
-const porcentagemCarregamento = document.getElementById('porcentagemCarregamento');
-const exibicaoAgente = document.getElementById('exibicaoAgente');
-const iconePapel = document.getElementById('iconePapel');
-const modal = document.getElementById('modal');
-const textoModal = document.getElementById('textoModal');
-const fecharModal = document.getElementById('fecharModal');
-const iconeModal = document.getElementById('iconeModal');
-const nomeHabilidadeModal = document.getElementById('nomeHabilidadeModal');
-
-function abrirModal(conteudo) {
-    if (typeof conteudo === 'string') {
-        iconeModal.style.display = 'none';
-        nomeHabilidadeModal.textContent = '';
-        textoModal.innerText = conteudo;
-    } else {
-        if (conteudo.displayIcon) {
-            iconeModal.src = conteudo.displayIcon;
-            iconeModal.alt = conteudo.displayName;
-            iconeModal.style.display = 'block';
-        } else {
-            iconeModal.style.display = 'none';
-        }
-        nomeHabilidadeModal.textContent = conteudo.displayName;
-        textoModal.innerText = conteudo.description;
-    }
-    modal.style.display = 'flex';
-}
-
-function fecharModalFunc() {
-    modal.style.display = 'none';
-}
-
-fecharModal.addEventListener('click', fecharModalFunc);
-modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        fecharModalFunc();
-    }
-});
-
-function atualizarProgressoCarregamento(progresso) {
-    porcentagemCarregamento.innerText = `${progresso}%`;
-}
+const modalAgente = document.getElementById("modalAgente");
+const modalImagem = document.getElementById("modalImagemAgente");
+const modalNome = document.getElementById("modalNomeAgente");
+const modalFuncao = document.getElementById("modalFuncaoAgente");
+const modalDescricao = document.getElementById("modalDescricaoAgente");
+const modalHabilidades = document.getElementById("modalHabilidades");
+const modalFuncaoIcone = document.getElementById("modalFuncaoIcone");
+const fecharModal = document.getElementById("fecharModalAgente");
 
 async function inicializar() {
-    try {
-        agentes = await buscarAgentes(atualizarProgressoCarregamento);
-        agentes.sort((a, b) => a.displayName.localeCompare(b.displayName));
-        exibirAgente(agentes[indiceAgenteAtual]);
-        carregandoElemento.style.display = 'none';
-        exibicaoAgente.style.display = 'grid';
-        atualizarProgressoCarregamento(100); 
-    } catch (error) {
-        console.error('Erro ao buscar agentes:', error);
-    }
+  agentes = await buscarAgentes(() => {});
+  agentes.sort((a, b) => a.displayName.localeCompare(b.displayName));
+  renderizarListaAgentes(agentes);
+  document.getElementById("searchInput").addEventListener("input", filtrarAgentes);
 }
 
-function exibirDescricaoHabilidade(habilidade) {
-    abrirModal(`Descrição da habilidade:\n${habilidade.description}`);
+function renderizarListaAgentes(lista) {
+  const container = document.getElementById("listaAgentes");
+  container.innerHTML = "";
+
+  lista.forEach((agente) => {
+    const card = document.createElement("div");
+    card.classList.add("card-agente");
+
+    card.innerHTML = `
+      <img src="${agente.displayIcon}" alt="${agente.displayName}">
+      <div class="info">
+        <p class="nome">${agente.displayName}</p>
+        <p class="funcao">${agente.role?.displayName || "Sem função"}</p>
+      </div>
+    `;
+
+    card.addEventListener("click", () => abrirModalAgente(agente));
+    container.appendChild(card);
+  });
 }
 
-function exibirAgente(agente) {
-    imagemAgente.src = agente.fullPortrait;
-    containerImagemAgente.style.backgroundImage = `url(${agente.background})`;
-    containerImagemAgente.style.backgroundPosition = 'left -10px top -40px';
-    containerImagemAgente.style.backgroundSize = '105%'; 
-    nomeAgente.textContent = agente.displayName;
-    papelAgente.textContent = `Papel: ${agente.role.displayName}`;
-    descricaoAgente.textContent = agente.description;
-    habilidadesAgente.innerHTML = '';
+function filtrarAgentes() {
+  const termo = document.getElementById("searchInput").value.toLowerCase();
+  const filtrados = agentes.filter(
+    (agente) =>
+      agente.displayName.toLowerCase().includes(termo) ||
+      agente.role?.displayName.toLowerCase().includes(termo)
+  );
+  renderizarListaAgentes(filtrados);
+}
 
-    iconePapel.src = agente.role.displayIcon;
-    const corPapel = coresPapel[agente.role.displayName] || '#ffffff';
-    iconePapel.style.backgroundColor = corPapel;
+function abrirModalAgente(agente) {
+  modalAgente.classList.add("ativo");
 
-    const corAgente = coresAgente[agente.displayName] || '#a1d7ff';
-    containerImagemAgente.style.backgroundColor = corAgente;
-    nomeAgente.style.backgroundColor = corAgente;
+  const quadro = document.querySelector(".quadro-personagem");
 
-    const habilidadesParaExibir = agente.abilities
-            .filter(hab => hab.displayIcon)
-            .slice(0, 4);
-    habilidadesParaExibir.forEach(habilidade => {
-        const divHabilidade = document.createElement('div');
-        divHabilidade.classList.add('habilidade');
-        const imgHabilidade = document.createElement('img');
-        imgHabilidade.src = habilidade.displayIcon;
-        imgHabilidade.alt = habilidade.displayName;
-        const nomeHabilidade = document.createElement('p');
-        nomeHabilidade.textContent = habilidade.displayName;
-        divHabilidade.appendChild(imgHabilidade);
-        divHabilidade.appendChild(nomeHabilidade);
-        divHabilidade.addEventListener('click', () => 
-            exibirDescricaoHabilidade(habilidade)); 
-        habilidadesAgente.appendChild(divHabilidade);
+  // imagem de fundo COM O NOME DO AGENTE (a correta)
+  quadro.style.backgroundImage = `url(${agente.background})`;
+  quadro.style.backgroundPosition = "left -10px top -40px";
+  quadro.style.backgroundSize = "105%";
+  quadro.style.backgroundRepeat = "no-repeat";
+
+  // cor de fundo atrás do personagem (pega da API também)
+  const cor = agente.backgroundGradientColors?.[0] || "FF4655";
+  quadro.style.backgroundColor = `#${cor}`;
+
+  modalImagem.src = agente.fullPortrait || agente.fullPortraitV2;
+  modalNome.textContent = agente.displayName;
+  modalNome.style.color = `#${cor}`;
+  modalFuncao.textContent = agente.role?.displayName ?? "Sem função";
+  modalFuncaoIcone.src = agente.role?.displayIcon ?? "";
+  modalFuncaoIcone.style.display = agente.role ? "block" : "none";
+  modalDescricao.textContent = agente.description;
+
+  modalHabilidades.innerHTML = "";
+
+  agente.abilities
+    .filter(h => h.displayIcon)
+    .slice(0, 4)
+    .forEach((hab) => {
+      const habilidade = document.createElement("div");
+      habilidade.classList.add("habilidade");
+
+      habilidade.innerHTML = `
+        <div class="hab-header">
+          <img src="${hab.displayIcon}">
+          <span>${hab.displayName}</span>
+        </div>
+      `;
+
+      habilidade.addEventListener("click", () => {
+        habilidade.classList.toggle("ativa");
+      });
+
+      modalHabilidades.appendChild(habilidade);
     });
 }
 
-function buscarAgente() {
-    const termoBusca = BuscaId.value.trim().toLowerCase();
-    const indiceAgenteEncontrado = agentes.findIndex(agente =>
-        agente.displayName.toLowerCase().includes(termoBusca)
-    );
+function inserirTextoFundo(quadro, nome) {
+  let bgText = quadro.querySelector(".bg-text");
 
-    if (indiceAgenteEncontrado !== -1) {
-        indiceAgenteAtual = indiceAgenteEncontrado;
-        exibirAgente(agentes[indiceAgenteAtual]);
-    } else {
-        abrirModal('Agente não encontrado!');
-    }
+  if (!bgText) {
+    bgText = document.createElement("div");
+    bgText.classList.add("bg-text");
+    quadro.appendChild(bgText);
+  }
+
+  bgText.textContent = nome.toUpperCase();
 }
 
-function exibirAgenteAnterior() {
-    indiceAgenteAtual = (indiceAgenteAtual - 1 + agentes.length) % agentes.length;
-    exibirAgente(agentes[indiceAgenteAtual]);
-}
+fecharModal.addEventListener("click", () => modalAgente.classList.remove("ativo"));
 
-function exibirProximoAgente() {
-    indiceAgenteAtual = (indiceAgenteAtual + 1) % agentes.length;
-    exibirAgente(agentes[indiceAgenteAtual]);
-}
-
-botaoAnterior.addEventListener('click', exibirAgenteAnterior);
-botaoProximo.addEventListener('click', exibirProximoAgente);
-botaoBusca.addEventListener('click', buscarAgente);
-BuscaId.addEventListener('keydown', event => {
-    if (event.key === 'Enter') {
-        buscarAgente();
-    }
+modalAgente.addEventListener("click", (e) => {
+  if (e.target === modalAgente) modalAgente.classList.remove("ativo");
 });
-document.addEventListener('keydown', event => {
-    if (event.key === 'ArrowLeft') {
-        exibirAgenteAnterior();
-    } else if (event.key === 'ArrowRight') {
-        exibirProximoAgente();
-    } else if (event.key === 'Escape') {
-        fecharModalFunc();
-    }
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") modalAgente.classList.remove("ativo");
 });
 
 inicializar();
-
-
