@@ -15,7 +15,9 @@ async function inicializar() {
   agentes = await buscarAgentes(() => {});
   agentes.sort((a, b) => a.displayName.localeCompare(b.displayName));
   renderizarListaAgentes(agentes);
-  document.getElementById("searchInput").addEventListener("input", filtrarAgentes);
+  document
+    .getElementById("searchInput")
+    .addEventListener("input", filtrarAgentes);
 }
 
 function renderizarListaAgentes(lista) {
@@ -54,13 +56,13 @@ function abrirModalAgente(agente) {
 
   const quadro = document.querySelector(".quadro-personagem");
 
-  // imagem de fundo COM O NOME DO AGENTE (a correta)
+  // background do personagem
   quadro.style.backgroundImage = `url(${agente.background})`;
   quadro.style.backgroundPosition = "left -10px top -40px";
   quadro.style.backgroundSize = "105%";
   quadro.style.backgroundRepeat = "no-repeat";
 
-  // cor de fundo atrás do personagem (pega da API também)
+  // cor de fundo atrás do personagem 
   const cor = agente.backgroundGradientColors?.[0] || "FF4655";
   quadro.style.backgroundColor = `#${cor}`;
 
@@ -75,25 +77,34 @@ function abrirModalAgente(agente) {
   modalHabilidades.innerHTML = "";
 
   agente.abilities
-    .filter(h => h.displayIcon)
+    .filter((h) => h.displayIcon)
     .slice(0, 4)
-    .forEach((hab) => {
-      const habilidade = document.createElement("div");
-      habilidade.classList.add("habilidade");
+    modalHabilidades.innerHTML = "";
 
-      habilidade.innerHTML = `
-        <div class="hab-header">
-          <img src="${hab.displayIcon}">
-          <span>${hab.displayName}</span>
-        </div>
-      `;
+agente.abilities
+  .filter((h) => h.displayIcon)
+  .slice(0, 4)
+  .forEach((hab) => {
+    const habilidade = document.createElement("div");
+    habilidade.classList.add("habilidade");
 
-      habilidade.addEventListener("click", () => {
-        habilidade.classList.toggle("ativa");
-      });
+    habilidade.innerHTML = `
+      <div class="hab-header">
+        <img src="${hab.displayIcon}">
+        <span>${hab.displayName}</span>
+      </div>
+      <div class="hab-desc">
+        <p>${hab.description || "Sem descrição"}</p>
+      </div>
+    `;
 
-      modalHabilidades.appendChild(habilidade);
+    habilidade.addEventListener("click", () => {
+      habilidade.classList.toggle("ativa");
     });
+
+    modalHabilidades.appendChild(habilidade);
+  });
+
 }
 
 function inserirTextoFundo(quadro, nome) {
@@ -108,7 +119,9 @@ function inserirTextoFundo(quadro, nome) {
   bgText.textContent = nome.toUpperCase();
 }
 
-fecharModal.addEventListener("click", () => modalAgente.classList.remove("ativo"));
+fecharModal.addEventListener("click", () =>
+  modalAgente.classList.remove("ativo")
+);
 
 modalAgente.addEventListener("click", (e) => {
   if (e.target === modalAgente) modalAgente.classList.remove("ativo");
