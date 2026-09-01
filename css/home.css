@@ -1,0 +1,1157 @@
+/* HEADER */
+
+.header-home {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 28px 6%;
+
+  z-index: 20;
+}
+
+.logo-header {
+  display: flex;
+
+  align-items: center;
+
+  text-decoration: none;
+}
+
+.logo-header img {
+  width: 45px;
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.logo-header:hover img {
+  transform: scale(1.08);
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(255, 70, 85, 0.7)
+    );
+}
+
+
+/* MENU */
+
+.menu-home {
+  display: flex;
+
+  align-items: center;
+
+  gap: 38px;
+}
+
+.menu-home a {
+  position: relative;
+
+  padding: 6px 0;
+
+  color: var(--white);
+
+  text-decoration: none;
+
+  font-family: "Valorant", Arial, sans-serif;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  transition:
+    color 0.25s ease;
+}
+
+.menu-home a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -4px;
+
+  width: 0;
+  height: 2px;
+
+  background:
+    var(--valorant-red);
+
+  transition:
+    width 0.3s ease;
+}
+
+.menu-home a:hover {
+  color:
+    var(--valorant-red);
+}
+
+.menu-home a:hover::after {
+  width: 100%;
+}
+
+
+/* HERO */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    130px 25px
+    100px;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 70, 85, 0.1),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #0b141d 0%,
+      var(--valorant-dark) 48%,
+      #111e29 100%
+    );
+}
+
+
+/* GRADE DO FUNDO */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.04;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    60px 60px;
+
+  pointer-events: none;
+}
+
+
+/* DETALHE INFERIOR */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--valorant-red),
+      transparent
+    );
+}
+
+
+/* FORMAS DECORATIVAS */
+
+.forma {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.045);
+
+  transform:
+    rotate(45deg);
+
+  pointer-events: none;
+}
+
+.forma-1 {
+  left: -280px;
+  top: 130px;
+}
+
+.forma-2 {
+  right: -300px;
+  bottom: -150px;
+
+  border-color:
+    rgba(255, 70, 85, 0.1);
+}
+
+.linha {
+  position: absolute;
+
+  background:
+    var(--valorant-red);
+
+  opacity: 0.6;
+}
+
+.linha-1 {
+  width: 2px;
+  height: 140px;
+
+  left: 7%;
+  top: 34%;
+}
+
+.linha-2 {
+  width: 110px;
+  height: 2px;
+
+  right: 7%;
+  bottom: 24%;
+}
+
+
+/* CONTEÚDO HERO */
+
+.hero-conteudo {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+
+  max-width: 850px;
+}
+
+.logo-valorant {
+  width:
+    clamp(
+      130px,
+      14vw,
+      200px
+    );
+
+  margin:
+    0 auto
+    24px;
+
+  filter:
+    drop-shadow(
+      0 0 30px
+      rgba(255, 70, 85, 0.18)
+    );
+
+  animation:
+    entradaLogo
+    0.9s ease forwards;
+}
+
+@keyframes entradaLogo {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+.pre-titulo {
+  color:
+    var(--gray);
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  letter-spacing: 7px;
+
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  margin: 0;
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(
+      58px,
+      10vw,
+      130px
+    );
+
+  font-weight: normal;
+
+  line-height: 0.9;
+
+  letter-spacing:
+    clamp(
+      5px,
+      1vw,
+      12px
+    );
+
+  color:
+    var(--white);
+
+  text-shadow:
+    0 0 40px
+    rgba(255, 255, 255, 0.04);
+}
+
+.slogan {
+  margin-top: 20px;
+
+  color:
+    var(--valorant-red);
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(
+      11px,
+      1.5vw,
+      15px
+    );
+
+  letter-spacing: 8px;
+}
+
+.descricao {
+  max-width: 680px;
+
+  margin:
+    32px auto
+    0;
+
+  color:
+    #bac0c5;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+
+/* BOTÕES */
+
+.acoes {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 18px;
+
+  margin-top: 42px;
+}
+
+
+/* VERMELHO */
+
+.botao-principal {
+  position: relative;
+
+  min-width: 220px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    18px 30px;
+
+  background:
+    var(--valorant-red);
+
+  border:
+    1px solid
+    var(--valorant-red);
+
+  color:
+    var(--white);
+
+  text-decoration: none;
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  overflow: hidden;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.botao-principal::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    var(--white);
+
+  transform:
+    translateX(-102%);
+
+  transition:
+    transform 0.35s ease;
+}
+
+.botao-principal span {
+  position: relative;
+
+  z-index: 2;
+}
+
+.botao-principal:hover {
+  color:
+    var(--valorant-dark);
+
+  border-color:
+    var(--white);
+}
+
+.botao-principal:hover::before {
+  transform:
+    translateX(0);
+}
+
+
+/* TRANSPARENTE */
+
+.botao-secundario {
+  min-width: 220px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    18px 30px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.3);
+
+  color:
+    var(--white);
+
+  text-decoration: none;
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.botao-secundario:hover {
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  border-color:
+    var(--valorant-red);
+
+  color:
+    var(--valorant-red);
+}
+
+
+/* INDICADOR */
+
+.indicador-scroll {
+  position: absolute;
+
+  left: 50%;
+  bottom: 25px;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color:
+    #737c85;
+
+  text-decoration: none;
+
+  font-size: 9px;
+
+  letter-spacing: 4px;
+
+  z-index: 5;
+}
+
+.seta-scroll {
+  color:
+    var(--valorant-red);
+
+  font-size: 20px;
+
+  animation:
+    movimentoSeta
+    1.5s ease-in-out
+    infinite;
+}
+
+@keyframes movimentoSeta {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(6px);
+  }
+
+}
+
+
+/* EXPLORAR */
+
+.explorar {
+  position: relative;
+
+  padding:
+    110px 7%
+    120px;
+
+  background:
+    var(--valorant-light);
+
+  color:
+    var(--valorant-dark);
+
+  overflow: hidden;
+}
+
+.explorar::before {
+  content: "VALORANT";
+
+  position: absolute;
+
+  right: -20px;
+  top: 25px;
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(
+      70px,
+      15vw,
+      210px
+    );
+
+  color:
+    rgba(15, 25, 35, 0.025);
+
+  letter-spacing: 12px;
+
+  pointer-events: none;
+}
+
+
+/* CABEÇALHO DA SEÇÃO */
+
+.cabecalho-secao {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 720px;
+
+  margin-bottom: 60px;
+}
+
+.secao-indice {
+  display: block;
+
+  color:
+    var(--valorant-red);
+
+  font-family:
+    monospace;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  margin-bottom: 15px;
+}
+
+.secao-superior {
+  color:
+    var(--valorant-red);
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: 4px;
+}
+
+.cabecalho-secao h2 {
+  margin:
+    12px 0
+    18px;
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(
+      40px,
+      6vw,
+      72px
+    );
+
+  font-weight: normal;
+
+  line-height: 1;
+
+  letter-spacing: 4px;
+}
+
+.secao-descricao {
+  max-width: 600px;
+
+  color:
+    var(--gray-dark);
+
+  line-height: 1.7;
+
+  font-size: 16px;
+}
+
+
+/* GRID */
+
+.grid-menu {
+  position: relative;
+
+  z-index: 3;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 18px;
+}
+
+
+/* CARDS */
+
+.card-menu {
+  position: relative;
+
+  min-height: 310px;
+
+  padding: 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content:
+    space-between;
+
+  background:
+    var(--valorant-dark);
+
+  color:
+    var(--white);
+
+  text-decoration: none;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-menu::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    var(--valorant-red);
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    left;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.card-menu::after {
+  content: "";
+
+  position: absolute;
+
+  width: 140px;
+  height: 140px;
+
+  right: -75px;
+  top: -75px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  transform:
+    rotate(45deg);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.card-menu:hover {
+  transform:
+    translateY(-8px);
+
+  background:
+    #162532;
+
+  box-shadow:
+    0 20px 30px
+    rgba(15, 25, 35, 0.18);
+}
+
+.card-menu:hover::before {
+  transform:
+    scaleX(1);
+}
+
+.card-menu:hover::after {
+  transform:
+    rotate(45deg)
+    scale(1.15);
+
+  border-color:
+    rgba(255, 70, 85, 0.7);
+}
+
+
+/* CARD PRINCIPAL */
+
+.card-agentes {
+  grid-column:
+    span 2;
+
+  background:
+    var(--valorant-red);
+}
+
+.card-agentes::before {
+  background:
+    var(--white);
+}
+
+.card-agentes:hover {
+  background:
+    var(--valorant-red-dark);
+}
+
+.card-agentes:hover::after {
+  border-color:
+    rgba(255, 255, 255, 0.5);
+}
+
+
+/* ÚLTIMO */
+
+.card-jogo {
+  grid-column:
+    span 2;
+}
+
+
+/* CARD INTERNO */
+
+.numero-card {
+  position: relative;
+
+  z-index: 2;
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  opacity: 0.4;
+}
+
+.card-conteudo {
+  position: relative;
+
+  z-index: 2;
+}
+
+.categoria {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color:
+    rgba(255, 255, 255, 0.5);
+
+  font-size: 9px;
+
+  font-weight: bold;
+
+  letter-spacing: 3px;
+}
+
+.card-menu h3 {
+  margin-bottom: 15px;
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(
+      28px,
+      3vw,
+      40px
+    );
+
+  font-weight: normal;
+
+  letter-spacing: 3px;
+}
+
+.card-menu p {
+  max-width: 420px;
+
+  margin-bottom: 24px;
+
+  color:
+    #a9b0b6;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.card-agentes p {
+  color:
+    rgba(255, 255, 255, 0.82);
+}
+
+.card-agentes .categoria {
+  color:
+    rgba(255, 255, 255, 0.65);
+}
+
+.explorar-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  font-family:
+    "Valorant",
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+}
+
+.explorar-card strong {
+  color:
+    var(--valorant-red);
+
+  font-size: 18px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.card-agentes .explorar-card strong {
+  color:
+    var(--white);
+}
+
+.card-menu:hover
+.explorar-card strong {
+  transform:
+    translateX(6px);
+}
+
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 15px;
+
+  padding:
+    40px 20px;
+
+  background:
+    #080e14;
+
+  color:
+    #737c85;
+
+  text-align: center;
+
+  font-size: 13px;
+}
+
+.footer-logo {
+  width: 32px;
+
+  opacity: 0.55;
+}
+
+.footer strong {
+  color:
+    var(--white);
+}
+
+
+/* TABLET */
+
+@media (max-width: 950px) {
+
+  .header-home {
+    flex-direction: column;
+
+    gap: 22px;
+  }
+
+  .menu-home {
+    gap: 25px;
+  }
+
+  .grid-menu {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .card-agentes,
+  .card-jogo {
+    grid-column:
+      span 2;
+  }
+
+}
+
+
+/* CELULAR */
+
+@media (max-width: 620px) {
+
+  .header-home {
+    padding:
+      20px 15px;
+  }
+
+  .logo-header {
+    display: none;
+  }
+
+  .menu-home {
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap:
+      14px 20px;
+  }
+
+  .menu-home a {
+    font-size: 10px;
+
+    letter-spacing: 1px;
+  }
+
+  .hero {
+    min-height: 100svh;
+
+    padding:
+      160px 20px
+      90px;
+  }
+
+  .hero h1 {
+    letter-spacing: 4px;
+  }
+
+  .slogan {
+    letter-spacing: 4px;
+  }
+
+  .descricao {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .acoes {
+    flex-direction: column;
+  }
+
+  .botao-principal,
+  .botao-secundario {
+    width: 100%;
+
+    max-width: 280px;
+  }
+
+  .linha,
+  .forma {
+    opacity: 0.5;
+  }
+
+  .explorar {
+    padding:
+      80px 20px;
+  }
+
+  .grid-menu {
+    grid-template-columns:
+      1fr;
+  }
+
+  .card-agentes,
+  .card-jogo {
+    grid-column:
+      span 1;
+  }
+
+  .card-menu {
+    min-height: 260px;
+
+    padding: 25px;
+  }
+
+}

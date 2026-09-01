@@ -1,87 +1,379 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentes - Valorant</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.cdnfonts.com/css/valorant" rel="stylesheet">
-  <link rel="icon" href="img/valorant icon.png" type="image/png">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Valorant</title>
+
+  <link
+    rel="icon"
+    href="img/valorant icon.png"
+    type="image/png"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/global.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/home.css"
+  >
 </head>
 
 <body>
 
-  <header class="header">
-    <div class="logo-container">
-      <img src="img/valorant icon.png" alt="Valorant Logo" class="logo">
-      <h1 class="titulo"></h1>
-    </div>
+  <header class="header-home">
 
-    <div class="right-controls">
-      <input id="searchInput" type="text" placeholder="Buscar agente..." />
+    <a
+      href="index.html"
+      class="logo-header"
+      aria-label="Página inicial"
+    >
+      <img
+        src="img/valorant icon.png"
+        alt="Logo Valorant"
+      >
+    </a>
 
-      
-      <button id="toggleSidebar" class="sidebar-toggle">☰</button>
-    </div>
+    <nav class="menu-home">
+
+      <a href="pages/agentes.html">
+        Agentes
+      </a>
+
+      <a href="pages/mapas.html">
+        Mapas
+      </a>
+
+      <a href="pages/armas.html">
+        Armas
+      </a>
+
+      <a href="pages/skins.html">
+        Skins
+      </a>
+
+      <a href="pages/jogo.html">
+        Jogo
+      </a>
+
+    </nav>
+
   </header>
 
 
-  <aside id="sidebar" class="sidebar">
-
-  <button id="minimizeSidebar" class="sidebar-toggle minimize">
-    →
-  </button>
-
-  <nav class="sidebar-menu">
-    <a href="agentes.html">Agentes</a>
-    <a href="mapas.html">Mapas</a>
-    <a href="armas.html">Armas</a>
-    <a href="skins.html">Skins</a>
-    <a href="jogo.html">Jogo</a>
-  </nav>
-</aside>
-
-
-  <div id="overlay" class="overlay"></div>
-
-
   <main>
-    <section id="listaAgentes"></section>
+
+    <section class="hero">
+
+      <div class="forma forma-1"></div>
+      <div class="forma forma-2"></div>
+      <div class="linha linha-1"></div>
+      <div class="linha linha-2"></div>
+
+      <div class="hero-conteudo">
+
+        <img
+          src="img/valorant logo.png"
+          alt="Logo Valorant"
+          class="logo-valorant"
+        >
+
+        <p class="pre-titulo">
+          RIOT GAMES
+        </p>
+
+        <h1>
+          VALORANT
+        </h1>
+
+        <p class="slogan">
+          DESAFIE OS LIMITES
+        </p>
+
+        <p class="descricao">
+          VALORANT é um jogo de tiro tático competitivo
+          5 contra 5 desenvolvido pela Riot Games.
+          Escolha seu agente, domine habilidades únicas
+          e combine estratégia, precisão e trabalho em
+          equipe para conquistar cada rodada.
+        </p>
+
+        <div class="acoes">
+
+          <a
+            href="pages/agentes.html"
+            class="botao-principal"
+          >
+            <span>
+              VER AGENTES
+            </span>
+          </a>
+
+          <a
+            href="#explorar"
+            class="botao-secundario"
+          >
+            EXPLORAR O SITE
+          </a>
+
+        </div>
+
+      </div>
+
+      <a
+        href="#explorar"
+        class="indicador-scroll"
+        aria-label="Descer para explorar"
+      >
+
+        <span>
+          EXPLORE
+        </span>
+
+        <div class="seta-scroll">
+          ↓
+        </div>
+
+      </a>
+
+    </section>
+
+
+    <section
+      class="explorar"
+      id="explorar"
+    >
+
+      <div class="cabecalho-secao">
+
+        <span class="secao-indice">
+          // 01
+        </span>
+
+        <p class="secao-superior">
+          CONHEÇA O UNIVERSO
+        </p>
+
+        <h2>
+          EXPLORE VALORANT
+        </h2>
+
+        <p class="secao-descricao">
+          Conheça os agentes, mapas, armas, skins
+          e os principais elementos que formam
+          o universo competitivo de Valorant.
+        </p>
+
+      </div>
+
+
+      <div class="grid-menu">
+
+        <a
+          href="pages/agentes.html"
+          class="card-menu card-agentes"
+        >
+
+          <div class="numero-card">
+            01
+          </div>
+
+          <div class="card-conteudo">
+
+            <span class="categoria">
+              PERSONAGENS
+            </span>
+
+            <h3>
+              AGENTES
+            </h3>
+
+            <p>
+              Descubra todos os agentes do jogo,
+              suas funções, histórias e habilidades.
+            </p>
+
+            <span class="explorar-card">
+              EXPLORAR
+              <strong>→</strong>
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a
+          href="pages/mapas.html"
+          class="card-menu"
+        >
+
+          <div class="numero-card">
+            02
+          </div>
+
+          <div class="card-conteudo">
+
+            <span class="categoria">
+              CAMPOS DE BATALHA
+            </span>
+
+            <h3>
+              MAPAS
+            </h3>
+
+            <p>
+              Explore cada mapa e conheça os
+              diferentes cenários das partidas.
+            </p>
+
+            <span class="explorar-card">
+              EXPLORAR
+              <strong>→</strong>
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a
+          href="pages/armas.html"
+          class="card-menu"
+        >
+
+          <div class="numero-card">
+            03
+          </div>
+
+          <div class="card-conteudo">
+
+            <span class="categoria">
+              ARSENAL
+            </span>
+
+            <h3>
+              ARMAS
+            </h3>
+
+            <p>
+              Conheça rifles, pistolas,
+              submetralhadoras, snipers e
+              todo o arsenal disponível.
+            </p>
+
+            <span class="explorar-card">
+              EXPLORAR
+              <strong>→</strong>
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a
+          href="pages/skins.html"
+          class="card-menu"
+        >
+
+          <div class="numero-card">
+            04
+          </div>
+
+          <div class="card-conteudo">
+
+            <span class="categoria">
+              COSMÉTICOS
+            </span>
+
+            <h3>
+              SKINS
+            </h3>
+
+            <p>
+              Explore coleções, variantes e
+              diferentes visuais disponíveis
+              para as armas.
+            </p>
+
+            <span class="explorar-card">
+              EXPLORAR
+              <strong>→</strong>
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a
+          href="pages/jogo.html"
+          class="card-menu card-jogo"
+        >
+
+          <div class="numero-card">
+            05
+          </div>
+
+          <div class="card-conteudo">
+
+            <span class="categoria">
+              VALORANT
+            </span>
+
+            <h3>
+              O JOGO
+            </h3>
+
+            <p>
+              Aprenda sobre as mecânicas,
+              modos de jogo, funções e
+              conceitos essenciais de Valorant.
+            </p>
+
+            <span class="explorar-card">
+              EXPLORAR
+              <strong>→</strong>
+            </span>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
   </main>
 
 
-  <footer>
-    <p>Projeto desenvolvido por <strong>Davi Gomes</strong> e <strong>Thiago Schmitz</strong></p>
+  <footer class="footer">
+
+    <img
+      src="img/valorant icon.png"
+      alt=""
+      class="footer-logo"
+    >
+
+    <p>
+      Projeto desenvolvido por
+      <strong>Davi Gomes</strong>
+      e
+      <strong>Thiago Schmitz</strong>
+    </p>
+
   </footer>
 
-
-  <div id="modalAgente" class="modal-agente">
-    <div class="modal-agente-conteudo">
-
-      <button id="fecharModalAgente" class="fechar-modal-agente">✖</button>
-
-      <div class="modal-esquerda">
-        <div class="quadro-personagem">
-          <h1 id="bgNomeAgente" class="bg-text"></h1>
-          <img id="modalImagemAgente" class="modal-personagem-img">
-          <img id="modalFuncaoIcone" class="modal-funcao-icone">
-        </div>
-      </div>
-
-      <div class="modal-direita">
-        <h2 id="modalNomeAgente"></h2>
-        <h3 id="modalFuncaoAgente"></h3>
-        <p id="modalDescricaoAgente"></p>
-
-        <h3 style="margin-top: 30px;">Habilidades</h3>
-        <div id="modalHabilidades"></div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <script type="module" src="script.js"></script>
-  <script src="sidebar.js"></script> 
 </body>
+
 </html>
