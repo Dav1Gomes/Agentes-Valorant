@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapas - Valorant</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/pages/mapas.css">
+  <link rel="icon" href="../img/valorant icon.png" type="image/png">
+</head>
+
+<body>
+  <header class="header">
+    <a class="logo-container" href="../index.html" aria-label="Voltar para a página inicial">
+      <img src="../img/valorant icon.png" alt="Logo Valorant" class="logo">
+      <h1 class="titulo">MAPAS</h1>
+    </a>
+
+    <div class="right-controls">
+      <label class="search-box" for="searchInput">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Buscar mapa..." autocomplete="off">
+      </label>
+      <button id="toggleSidebar" class="sidebar-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="sidebar" aria-label="Menu principal" aria-hidden="true">
+    <button id="minimizeSidebar" class="sidebar-toggle minimize" type="button" aria-label="Fechar menu">→</button>
+    <nav class="sidebar-menu">
+      <a href="agentes.html">Agentes</a>
+      <a href="mapas.html" class="ativo" aria-current="page">Mapas</a>
+      <a href="armas.html">Armas</a>
+      <a href="skins.html">Skins</a>
+      <a href="jogo.html">Jogo</a>
+    </nav>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <main>
+    <section class="cabecalho-pagina">
+      <div>
+        <span class="indice">// 02 &nbsp; CAMPOS DE BATALHA</span>
+        <h2>DOMINE O<br><strong>TERRENO</strong></h2>
+      </div>
+      <p>Explore os mapas de Valorant, conheça suas localizações e visualize cada campo de batalha antes da próxima rodada.</p>
+    </section>
+
+    <section id="listaMapas" class="lista-mapas" aria-live="polite">
+      <div class="estado-pagina carregando">
+        <span>// CARREGANDO</span>
+        <h2>PREPARANDO OS MAPAS</h2>
+        <div class="linha-carregamento"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projeto desenvolvido por <strong>Davi Gomes</strong> e <strong>Thiago Schmitz</strong></p>
+  </footer>
+
+  <div id="modalMapa" class="modal-mapa" role="dialog" aria-modal="true" aria-labelledby="modalNomeMapa">
+    <div class="modal-mapa-conteudo">
+      <button id="fecharModalMapa" class="fechar-modal" type="button" aria-label="Fechar detalhes do mapa">✕</button>
+
+      <div class="modal-visual">
+        <img id="modalSplashMapa" class="modal-splash" alt="">
+        <div class="modal-visual-sombra"></div>
+        <span id="modalIndiceMapa" class="modal-indice"></span>
+        <div class="modal-titulo">
+          <span id="modalTipoMapa"></span>
+          <h2 id="modalNomeMapa"></h2>
+          <p id="modalCoordenadasMapa"></p>
+        </div>
+      </div>
+
+      <div class="modal-informacoes">
+        <div class="modal-resumo">
+          <span>// VISÃO TÁTICA</span>
+          <p id="modalDescricaoMapa"></p>
+        </div>
+
+        <div class="mapa-tatico">
+          <div class="moldura-minimapa">
+            <img id="modalIconeMapa" alt="Visão superior do mapa">
+          </div>
+          <dl class="dados-mapa">
+            <div>
+              <dt>LOCALIZAÇÃO</dt>
+              <dd id="modalLocalizacaoMapa"></dd>
+            </div>
+            <div>
+              <dt>REGIÕES MAPEADAS</dt>
+              <dd id="modalRegioesMapa"></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../js/mapas.js"></script>
+  <script src="../js/sidebar.js"></script>
+</body>
+</html>
