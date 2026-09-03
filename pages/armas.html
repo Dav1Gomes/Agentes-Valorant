@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armas - Valorant</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/pages/armas.css">
+  <link rel="icon" href="../img/valorant icon.png" type="image/png">
+</head>
+
+<body>
+  <header class="header">
+    <a class="logo-container" href="../index.html" aria-label="Voltar para a página inicial">
+      <img src="../img/valorant icon.png" alt="Logo Valorant" class="logo">
+      <h1 class="titulo">ARMAS</h1>
+    </a>
+
+    <div class="right-controls">
+      <label class="search-box" for="searchInput">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Buscar arma..." autocomplete="off">
+      </label>
+      <button id="toggleSidebar" class="sidebar-toggle" type="button" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="sidebar" aria-label="Menu principal">
+    <button id="minimizeSidebar" class="sidebar-toggle minimize" type="button" aria-label="Fechar menu">→</button>
+    <nav class="sidebar-menu">
+      <a href="agentes.html">Agentes</a>
+      <a href="mapas.html">Mapas</a>
+      <a href="armas.html" class="ativo" aria-current="page">Armas</a>
+      <a href="skins.html">Skins</a>
+      <a href="jogo.html">Jogo</a>
+    </nav>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <main>
+    <section class="cabecalho-pagina">
+      <div>
+        <span class="indice">// 03 &nbsp; ARSENAL</span>
+        <h2>ESCOLHA SEU<br><strong>EQUIPAMENTO</strong></h2>
+      </div>
+      <p>Conheça o arsenal de Valorant, compare atributos, alcance e dano para encontrar a arma ideal para cada rodada.</p>
+    </section>
+
+    <section class="barra-filtros" aria-label="Filtros de armas">
+      <div id="filtrosCategorias" class="filtros-categorias"></div>
+      <p id="contadorArmas" class="contador-armas"></p>
+    </section>
+
+    <section id="listaArmas" class="lista-armas" aria-live="polite">
+      <div class="estado-pagina carregando">
+        <span>// CARREGANDO</span>
+        <h2>PREPARANDO O ARSENAL</h2>
+        <div class="linha-carregamento"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projeto desenvolvido por <strong>Davi Gomes</strong> e <strong>Thiago Schmitz</strong></p>
+  </footer>
+
+  <div id="modalArma" class="modal-arma" role="dialog" aria-modal="true" aria-labelledby="modalNomeArma">
+    <div class="modal-arma-conteudo">
+      <button id="fecharModalArma" class="fechar-modal" type="button" aria-label="Fechar detalhes da arma">✕</button>
+
+      <section class="modal-apresentacao">
+        <span id="modalCategoriaArma" class="modal-categoria"></span>
+        <h2 id="modalNomeArma"></h2>
+        <div class="modal-imagem-container">
+          <span id="modalNumeroArma" class="modal-numero"></span>
+          <img id="modalImagemArma" alt="">
+        </div>
+        <div class="modal-preco">
+          <span>PREÇO</span>
+          <strong id="modalPrecoArma"></strong>
+        </div>
+      </section>
+
+      <section class="modal-detalhes">
+        <div id="estatisticasArma" class="estatisticas"></div>
+
+        <div id="secaoDano" class="secao-dano">
+          <div class="titulo-secao">
+            <span>// DANO POR DISTÂNCIA</span>
+            <p>Valores por disparo</p>
+          </div>
+          <div class="tabela-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ALCANCE</th>
+                  <th>CABEÇA</th>
+                  <th>CORPO</th>
+                  <th>PERNAS</th>
+                </tr>
+              </thead>
+              <tbody id="tabelaDano"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="previaSkins" class="previa-skins">
+          <div class="titulo-secao">
+            <span>// SKINS DISPONÍVEIS</span>
+            <p id="quantidadeSkins"></p>
+          </div>
+          <div id="listaPreviaSkins" class="lista-previa-skins"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="../js/armas.js"></script>
+  <script src="../js/sidebar.js"></script>
+</body>
+</html>
